@@ -43,14 +43,44 @@ property assessed values
 
 # Data Dictionary 
 
-| Feature | Values | Description                                  |
-|-------------|:-----------:|----------------------------------------------|
-| tax_value    | integer       | The cost of the property       |
-| Bedrooms |    integer    | The amount of bedrooms the property has |
-| Bathrooms | integer   | The amount of bathrooms the property has  |
-| Area| integer  | The area (squarefeet) the property has |
-| Fips| integer | The county and state code |
-| Sale_date | date yyyy/mm/dd str | The sale date of the property |
+<table style="width:100%">
+  <tr>
+    <th>Feature</th>
+    <th>Values</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>tax_value</td>
+    <td>integer</td>
+    <td>The cost of the property</td>
+  </tr>
+  <tr>
+    <td>Bedrooms</td>
+    <td>integer</td>
+    <td>The amount of bedrooms the property has</td>
+  </tr>
+  <tr>
+    <td>Bathrooms</td>
+    <td>integer</td>
+    <td>The amount of bathrooms the property has</td>
+  </tr>
+  <tr>
+    <td>Area</td>
+    <td>integer</td>
+    <td>The area (squarefeet) the property has</td>
+  </tr>
+  <tr>
+    <td>Fips</td>
+    <td>integer</td>
+    <td>The county and state code</td>
+  </tr>
+  <tr>
+    <td>Sale_date</td>
+    <td>date yyyy/mm/dd str</td>
+    <td>The sale date of the property</td>
+  </tr>
+</table>
+
 # Steps to Reproduce 
 - Clone repo
 - Accqire data from SQL data base (must have credentials!)
