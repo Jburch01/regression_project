@@ -81,6 +81,10 @@ def prep_zillow():
 
 
 def wrangle_zillow():
+    '''
+    This function grabs the preped zillow data and splits
+    it into train, validate and test. 
+    '''
     df = prep_zillow()
     train_val, test = train_test_split(df,
                                        train_size=0.8,
