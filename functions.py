@@ -17,6 +17,11 @@ warnings.filterwarnings("ignore")
 
 metric_df = {}
 def get_target_and_features(train, val, test):
+    '''
+    Grabs the target and features from the data and returns them
+    for respected train, val, test in a list
+    Example: x_train, y_train, x_val, y_val, x_test, y_test = get_target_and_features(train, val, test)
+    '''
     x_cols = ['tax_value', 'fips', 'sale_date']
     split_df = [train, val, test]
     x_y = []
@@ -64,6 +69,12 @@ def get_baseline(y_train, y_val, s=0):
     
 def lr(x_train, y_train, x_val, y_val, s=0):
     # MAKE THE THING: create the model object
+    '''
+    Does a linear regression model on the train validate data. 
+    Kwarg: s=0 by default and prints results
+    set it to 1 if you want it to append the results to a df
+    note: s=1  only works when running in the compare models function
+    '''
     lm = LinearRegression()
 
     #1. FIT THE THING: fit the model to training data
@@ -101,6 +112,12 @@ def lr(x_train, y_train, x_val, y_val, s=0):
    
         
 def lassolars(x_train, y_train, x_val, y_val, s=0):
+    '''
+    Does a lasso lars model on the train validate data. 
+    Kwarg: s=0 by default and prints results
+    set it to 1 if you want it to append the results to a df
+    note: s=1  only works when running in the compare models function
+    '''
     # MAKE THE THING: create the model object
     lars = LassoLars(alpha=0.01)
 
@@ -146,6 +163,12 @@ def lassolars(x_train, y_train, x_val, y_val, s=0):
 
 def tweedie(x_train, y_train, x_val, y_val, s=0):
     # MAKE THE THING: create the model object
+      '''
+    Does a tweedie regressor model on the train validate data. 
+    Kwarg: s=0 by default and prints results
+    set it to 1 if you want it to append the results to a df
+    note: s=1  only works when running in the compare models function
+    '''
     glm = TweedieRegressor(power=1, alpha=0)
 
     #1. FIT THE THING: fit the model to training data
@@ -185,6 +208,12 @@ def tweedie(x_train, y_train, x_val, y_val, s=0):
         
  
 def get_poly(x_train, y_train, x_val, y_val, x_test, y_test, s=0):
+     '''
+    Does a polynomial model on the train validate data. 
+    Kwarg: s=0 by default and prints results
+    set it to 1 if you want it to append the results to a df
+    note: s=1  only works when running in the compare models function
+    '''
     #1. Create the polynomial features to get a new set of features
     pf = PolynomialFeatures(degree=2) #quadratic aka x-squared
 
@@ -232,6 +261,10 @@ def get_poly(x_train, y_train, x_val, y_val, x_test, y_test, s=0):
 
     
 def compare_models(x_train, y_train, x_val, y_val, x_test, y_test):
+    '''
+    Runs all of the the models on train and validate and returns the results in a
+    data frame 
+    '''
     global metric_df
     get_baseline(y_train, y_val, s=1)
     lr(x_train, y_train, x_val, y_val, s=1)
@@ -245,6 +278,9 @@ def compare_models(x_train, y_train, x_val, y_val, x_test, y_test):
     
     
 def test_model(x_train, y_train, x_val, y_val, x_test, y_test):
+    '''
+    Runs the lasso lars on the test data and returns the RMSE and R2
+    '''
     lars = LassoLars(alpha=0.01)
 
     #1. FIT THE THING: fit the model to training data
