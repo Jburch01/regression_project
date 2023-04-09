@@ -96,7 +96,7 @@ def scale_data(train, val, test):
     '''
     This function scales the data using the sklearn minmax scaler. Does not scale the target or categorical columns
     '''
-    x_cols = [col for col in train.columns if col not in ['tax_value', 'fips', 'sale_date']]
+    x_cols = [col for col in train.columns if col not in ['tax_value', 'fips', 'sale_date', 'bedrooms', 'bathrooms']]
     split = [train, val, test]
     scale_list= []
     scaler = sklearn.preprocessing.MinMaxScaler()
